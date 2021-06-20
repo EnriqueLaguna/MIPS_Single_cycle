@@ -36,7 +36,7 @@ localparam ORI = 4'b0001;
 		
 		  ADD: // add
 			alu_data_o = a_i + b_i;
-
+		
 			
 			
 		default:

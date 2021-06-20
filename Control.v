@@ -39,6 +39,7 @@ always@(opcode_i) begin
 	case(opcode_i)
 	
 		R_TYPE     :  control_values_r = 11'b1_001_00_00_111;
+		I_TYPE_ADDI:  control_values_r = 11'b0_101_00_00_100;
 
 		default:
 			control_values_r = 11'b0000000000;
