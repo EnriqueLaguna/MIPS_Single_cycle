@@ -30,6 +30,7 @@ module ALU
 localparam ADD = 4'b0011;
 localparam ORI = 4'b0001;
 localparam SLL = 4'b0010;
+localparam SUB = 4'b0100;
 
    
    always @ (a_i or b_i or alu_operation_i or shamt)
@@ -42,6 +43,8 @@ localparam SLL = 4'b0010;
 			alu_data_o = a_i | b_i;
 		  SLL: //shift left logical
 			alu_data_o = b_i << shamt;
+		  SUB: // subtract (a - b)
+			alu_data_o = a_i - b_i;
 			
 		default:
 			alu_data_o = 0;

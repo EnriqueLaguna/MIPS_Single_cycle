@@ -8,6 +8,9 @@ add wave -noupdate -expand -group REGISTERS -label s0 -radix decimal /MIPS_Proce
 add wave -noupdate -expand -group REGISTERS -label s2 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s2/data_o
 add wave -noupdate -expand -group REGISTERS -label s3 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s3/data_o
 add wave -noupdate -expand -group REGISTERS -label s4 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s4/data_o
+add wave -noupdate -expand -group REGISTERS -label t0 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t0/data_o
+add wave -noupdate -expand -group REGISTERS -label t1 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t1/data_o
+add wave -noupdate -expand -group REGISTERS -label t2 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t2/data_o
 add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/alu_op_o
 add wave -noupdate -expand -group CONTROL -radix decimal -childformat {{{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[10]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[9]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[8]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[7]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[6]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[5]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[4]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[3]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[2]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[1]} -radix decimal} {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[0]} -radix decimal}} -subitemconfig {{/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[10]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[9]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[8]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[7]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[6]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[5]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[4]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[3]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[2]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[1]} {-height 15 -radix decimal} {/MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r[0]} {-height 15 -radix decimal}} /MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r
 add wave -noupdate -group CONTROL_O /MIPS_Processor_TB/DUV/CONTROL_UNIT/reg_dst_o
@@ -44,4 +47,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {42 ps}
+WaveRestoreZoom {61 ps} {103 ps}
