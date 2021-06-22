@@ -26,11 +26,12 @@ module ALU
 	output reg zero_o,
 	output reg [31:0] alu_data_o
 );
-
+// 				  VALS DE ALUCTRL
 localparam ADD = 4'b0011;
 localparam ORI = 4'b0001;
 localparam SLL = 4'b0010;
 localparam SUB = 4'b0100;
+localparam SRL = 4'b0101;
 
    
    always @ (a_i or b_i or alu_operation_i or shamt)
@@ -45,6 +46,8 @@ localparam SUB = 4'b0100;
 			alu_data_o = b_i << shamt;
 		  SUB: // subtract (a - b)
 			alu_data_o = a_i - b_i;
+		  SRL://shift right logical
+		   alu_data_o = b_i >> shamt;
 			
 		default:
 			alu_data_o = 0;
