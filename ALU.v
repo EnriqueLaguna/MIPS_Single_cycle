@@ -32,6 +32,7 @@ localparam ORI = 4'b0001;
 localparam SLL = 4'b0010;
 localparam SUB = 4'b0100;
 localparam SRL = 4'b0101;
+localparam LUI = 4'b0110;
 
    
    always @ (a_i or b_i or alu_operation_i or shamt)
@@ -48,6 +49,8 @@ localparam SRL = 4'b0101;
 			alu_data_o = a_i - b_i;
 		  SRL://shift right logical
 		   alu_data_o = b_i >> shamt;
+		  LUI:// concatenar el valor inmediato con 16 0's
+		   alu_data_o = {b_i, 16'b0};
 			
 		default:
 			alu_data_o = 0;

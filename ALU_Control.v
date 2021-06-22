@@ -27,7 +27,7 @@ localparam R_TYPE_ADD    = 9'b111_100000;
 //										100_XXXHEX
 localparam I_TYPE_ADDI	 = 9'b100_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
 localparam I_TYPE_ORI	 = 9'b001_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
-
+localparam I_TYPE_LUI	 = 9'b010_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
 //										111_000HEX
 localparam R_TYPE_SLL	 = 9'b111_000000;
 //										111_022HEX
@@ -53,7 +53,7 @@ always@(selector_w)begin
 		R_TYPE_SLL: 	alu_control_values_r = 4'b0010;
 		R_TYPE_SUB: 	alu_control_values_r = 4'b0100;
 		R_TYPE_SRL: 	alu_control_values_r = 4'b0101;
-		
+		I_TYPE_LUI: 	alu_control_values_r = 4'b0110;
 
 		default: alu_control_values_r = 4'b1001;
 	endcase

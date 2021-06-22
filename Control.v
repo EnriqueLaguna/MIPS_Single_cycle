@@ -30,7 +30,7 @@ module Control
 localparam R_TYPE = 0;
 localparam I_TYPE_ADDI = 6'H8;
 localparam I_TYPE_ORI =	6'HD;
-
+localparam I_TYPE_LUI =	6'HF;
 
 
 reg [10:0] control_values_r;
@@ -42,7 +42,7 @@ always@(opcode_i) begin
 		R_TYPE     :  control_values_r = 11'b1_001_00_00_111; // mismo OpCode para todas las tipo R
 		I_TYPE_ADDI:  control_values_r = 11'b0_101_00_00_100; // ultimos 3 bits son random (pero no se pueden rep.)
 		I_TYPE_ORI :  control_values_r = 11'b0_101_00_00_001;
-		
+		I_TYPE_LUI :  control_values_r = 11'b0_101_00_00_010;
 
 		default:
 			control_values_r = 11'b0000000000;
