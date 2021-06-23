@@ -8,6 +8,8 @@ add wave -noupdate -expand -group REGISTERS -label s0 -radix decimal /MIPS_Proce
 add wave -noupdate -expand -group REGISTERS -label s1 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s1/data_o
 add wave -noupdate -expand -group REGISTERS -label s2 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s2/data_o
 add wave -noupdate -expand -group REGISTERS -label s3 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s3/data_o
+add wave -noupdate -expand -group REGISTERS -label s4 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s4/data_o
+add wave -noupdate -expand -group REGISTERS -label s5 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s5/data_o
 add wave -noupdate -expand -group REGISTERS -label t0 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t0/data_o
 add wave -noupdate -expand -group REGISTERS -label t1 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t1/data_o
 add wave -noupdate -expand -group REGISTERS -label t2 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t2/data_o
@@ -47,4 +49,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {61 ps} {103 ps}
+WaveRestoreZoom {0 ps} {42 ps}

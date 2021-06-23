@@ -31,7 +31,7 @@ localparam R_TYPE = 0;
 localparam I_TYPE_ADDI = 6'H8;
 localparam I_TYPE_ORI =	6'HD;
 localparam I_TYPE_LUI =	6'HF;
-
+localparam I_TYPE_ANDI = 6'HC;
 
 reg [10:0] control_values_r;
 
@@ -43,6 +43,7 @@ always@(opcode_i) begin
 		I_TYPE_ADDI:  control_values_r = 11'b0_101_00_00_100; // ultimos 3 bits son random (pero no se pueden rep.)
 		I_TYPE_ORI :  control_values_r = 11'b0_101_00_00_001;
 		I_TYPE_LUI :  control_values_r = 11'b0_101_00_00_010;
+		I_TYPE_ANDI:  control_values_r = 11'b0_101_00_00_011;
 
 		default:
 			control_values_r = 11'b0000000000;
@@ -61,3 +62,5 @@ assign branch_eq_o = control_values_r[3]; // para beq
 assign alu_op_o = control_values_r[2:0];	// 3 primeros bits = ALU Op
 
 endmodule
+
+

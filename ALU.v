@@ -33,6 +33,8 @@ localparam SLL = 4'b0010;
 localparam SUB = 4'b0100;
 localparam SRL = 4'b0101;
 localparam LUI = 4'b0110;
+localparam AND = 4'b0111;
+localparam NOR = 4'b1000;
 
    
    always @ (a_i or b_i or alu_operation_i or shamt)
@@ -51,6 +53,10 @@ localparam LUI = 4'b0110;
 		   alu_data_o = b_i >> shamt;
 		  LUI:// concatenar el valor inmediato con 16 0's
 		   alu_data_o = {b_i, 16'b0};
+		  AND:
+			alu_data_o = a_i & b_i;
+		  NOR:
+		   alu_data_o = ~(a_i | b_i);  
 			
 		default:
 			alu_data_o = 0;

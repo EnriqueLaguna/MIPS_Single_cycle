@@ -34,6 +34,10 @@ localparam R_TYPE_SLL	 = 9'b111_000000;
 localparam R_TYPE_SUB	 = 9'b111_100010;
 //										111_002HEX
 localparam R_TYPE_SRL	 = 9'b111_000010;
+localparam R_TYPE_OR		 = 9'b111_100101;
+localparam R_TYPE_AND 	 = 9'b111_100100;
+localparam I_TYPE_ANDI 	 = 9'b011_xxxxxx;
+localparam R_TYPE_NOR    = 9'b111_100111;
 
 
 reg [3:0] alu_control_values_r;
@@ -50,10 +54,15 @@ always@(selector_w)begin
 		R_TYPE_ADD:    alu_control_values_r = 4'b0011;
 		I_TYPE_ADDI:	alu_control_values_r = 4'b0011;
 		I_TYPE_ORI:		alu_control_values_r = 4'b0001;
+		R_TYPE_OR:		alu_control_values_r = 4'b0001;
 		R_TYPE_SLL: 	alu_control_values_r = 4'b0010;
 		R_TYPE_SUB: 	alu_control_values_r = 4'b0100;
 		R_TYPE_SRL: 	alu_control_values_r = 4'b0101;
 		I_TYPE_LUI: 	alu_control_values_r = 4'b0110;
+		R_TYPE_AND:    alu_control_values_r = 4'b0111;
+		I_TYPE_ANDI:   alu_control_values_r = 4'b0111;
+		R_TYPE_NOR:    alu_control_values_r = 4'b1000;
+		
 
 		default: alu_control_values_r = 4'b1001;
 	endcase
