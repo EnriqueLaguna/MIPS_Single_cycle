@@ -35,13 +35,14 @@ localparam SRL = 4'b0101;
 localparam LUI = 4'b0110;
 localparam AND = 4'b0111;
 localparam NOR = 4'b1000;
+localparam LW =  4'b1010;
 
    
    always @ (a_i or b_i or alu_operation_i or shamt)
      begin
 		case (alu_operation_i)
 		
-		  ADD: // add
+		  ADD: // add & LW
 			alu_data_o = a_i + b_i;
 		  ORI: // ori
 			alu_data_o = a_i | b_i;
@@ -56,7 +57,7 @@ localparam NOR = 4'b1000;
 		  AND:
 			alu_data_o = a_i & b_i;
 		  NOR:
-		   alu_data_o = ~(a_i | b_i);  
+		   alu_data_o = ~(a_i | b_i); 
 			
 		default:
 			alu_data_o = 0;
