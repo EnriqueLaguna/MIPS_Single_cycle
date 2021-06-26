@@ -34,8 +34,6 @@ localparam I_TYPE_ORI =	6'hD;
 localparam I_TYPE_LUI =	6'hF;
 localparam I_TYPE_ANDI = 6'hC;
 localparam I_TYPE_LW = 6'h23;
-localparam I_TYPE_SW = 6'h2b;
-localparam J_TYPE_JMP = 6'h2;
 
 reg [12:0] control_values_r;
 
@@ -48,9 +46,7 @@ always@(opcode_i) begin
 		I_TYPE_ORI :  control_values_r = 13'b00_0_101_00_00_001;
 		I_TYPE_LUI :  control_values_r = 13'b00_0_101_00_00_010;
 		I_TYPE_ANDI:  control_values_r = 13'b00_0_101_00_00_011;
-		I_TYPE_LW: 	  control_values_r = 13'b00_0_111_10_00_101; // de mmry -> reg
-		I_TYPE_SW: 	  control_values_r = 13'b00_0_100_01_00_110;
-		J_TYPE_JMP:   control_values_r = 13'b01_0_000_00_00_000;
+		I_TYPE_LW: 	  control_values_r = 13'b00_0_111_10_00_101;
 
 		default:
 			control_values_r = 13'b000000000000;
@@ -61,7 +57,7 @@ end
 assign j_o = control_values_r[12];			// bandera de jump, 0 no se salta, 1 si salta
 assign jal_o = control_values_r[11];      // bandera de jal, 0 no se salta, 1 si salta
 assign reg_dst_o = control_values_r[10];  // es el destino (varía entre las tipo R y las tipo I -> rd, rt)
-assign alu_src_o = control_values_r[9];   // el dato que entra a la ALU viene como constante o viene del regFile (1 -> C, 0 -> R)?
+assign alu_src_o = control_values_r[9];   // el dato que entra a la ALU viene como constante o viene del regFile?
 assign mem_to_reg_o = control_values_r[8];// bandera que indica si se escribe en registros con un valor de mmry
 assign reg_write_o = control_values_r[7]; // bandera para saber si se escribe en registros o no
 assign mem_read_o = control_values_r[6];  // cuando se lee de memoria

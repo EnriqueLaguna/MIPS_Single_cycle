@@ -35,13 +35,14 @@ localparam SRL = 4'b0101;
 localparam LUI = 4'b0110;
 localparam AND = 4'b0111;
 localparam NOR = 4'b1000;
+localparam LW =  4'b1010;
 
    
    always @ (a_i or b_i or alu_operation_i or shamt)
      begin
 		case (alu_operation_i)
 		
-		  ADD: // add & addi & LW & SW
+		  ADD: // add & LW
 			alu_data_o = a_i + b_i;
 		  ORI: // ori
 			alu_data_o = a_i | b_i;
@@ -52,11 +53,11 @@ localparam NOR = 4'b1000;
 		  SRL://shift right logical
 		   alu_data_o = b_i >> shamt;
 		  LUI:// concatenar el valor inmediato con 16 0's
-		   alu_data_o = {b_i[15:0], 16'b0};
+		   alu_data_o = {b_i, 16'b0};
 		  AND:
 			alu_data_o = a_i & b_i;
 		  NOR:
-		   alu_data_o = ~(a_i | b_i);			 
+		   alu_data_o = ~(a_i | b_i); 
 			
 		default:
 			alu_data_o = 0;

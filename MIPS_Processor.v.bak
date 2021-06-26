@@ -63,7 +63,6 @@ wire [31:0] pc_plus_4_w;
 wire [31:0] mem_read_data_w;
 wire [31:0] read_memory_or_alu_result_w;
 wire [31:0] pc_plus4_or_data_w;
-wire [31:0] jmp_shifter_28_w;
 
 
 
@@ -185,38 +184,6 @@ MUX_READ_MEMORY_OR_ALU_RESULT
 	
 	.mux_o(read_memory_or_alu_result_w)
 );
-
-Shift_Left_2
-#(
-	.N_BITS(32)
-)
-JMP_SHIFTER_28
-(
-	// se necesita una entrada de 32bits, pero la instrucción es de 26
-	// entonces concatenamos 0's (para que no altere nada)
-	// así ya es válida la entrada a este módulo
-	.data_i({6'b000000, instruction_w[25:0]}),
-	// 
-	.data_o(jmp_shifter_28_w)
-	
-);
-
-
-// MUX de JUMP
-Multiplexer_2_to_1
-#(
-	.N_BITS(32)
-)
-MUX_JMP_OR_X
-(
-	.selector_i(j_w),
-	.data_0_i(),
-	.data_1_i({pc_plus_4_w[31:28], jmp_shifter_28_w[27:0]}),
-	
-	// falta conectar a otros MUX
-	.mux_o(pc_plus_jmp_w)
-);
-
 
 Multiplexer_2_to_1
 #(
