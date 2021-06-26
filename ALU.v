@@ -53,7 +53,7 @@ localparam LW =  4'b1010;
 		  SRL://shift right logical
 		   alu_data_o = b_i >> shamt;
 		  LUI:// concatenar el valor inmediato con 16 0's
-		   alu_data_o = {b_i, 16'b0};
+		   alu_data_o = {b_i[15:0], 16'b0};
 		  AND:
 			alu_data_o = a_i & b_i;
 		  NOR:

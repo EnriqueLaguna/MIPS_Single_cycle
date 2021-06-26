@@ -49,9 +49,13 @@ wire mem_read_w;
 wire mem_to_reg_w;
 wire j_w;
 wire jal_w;
+wire jr_w;
+wire branch_eq_w;
+wire branch_ne_w;
 wire [2:0] alu_op_w;
 wire [3:0] alu_operation_w;
 wire [4:0] write_register_w;
+wire [4:0] r_or_i_instruction;
 wire [31:0] pc_w;
 wire [31:0] instruction_w;
 wire [31:0] read_data_1_w;
@@ -63,6 +67,11 @@ wire [31:0] pc_plus_4_w;
 wire [31:0] mem_read_data_w;
 wire [31:0] read_memory_or_alu_result_w;
 wire [31:0] pc_plus4_or_data_w;
+wire [31:0] pc_branch_adder_w;
+wire [31:0] pc_branch_adder_result_w;
+wire [31:0] pc_jump_w; 
+wire [31:0] pc_new_adderss_w;
+
 
 
 
@@ -77,8 +86,10 @@ Control
 CONTROL_UNIT
 (
 	.opcode_i(instruction_w[31:26]),
+	.funct(instruction_w[5:0]),
 	.j_o(j_w),
-	.jal_o(jal_o),
+	.jal_o(jal_w),
+	.jr_o(jr_w),
 	.reg_dst_o(reg_dst_w),
 	.branch_ne_o(branch_ne_w),
 	.branch_eq_o(branch_eq_w),
@@ -95,7 +106,7 @@ PC
 (
 	.clk(clk),
 	.reset(reset),
-	.new_pc_i(pc_plus_4_w),
+	.new_pc_i(pc_new_adderss_w),
 	.pc_value_o(pc_w)
 );
 
@@ -138,6 +149,18 @@ PC_Puls_4
 );
 
 
+Adder
+#(
+	.N_BITS(32)
+)
+PC_BRANCH_ADDER
+(
+	.data_0_i(pc_plus_4_w),
+	.data_1_i(inmmediate_extend_w << 2),
+	
+	.result_o(pc_branch_adder_w)
+);
+
 //******************************************************************/
 //******************************************************************/
 //******************************************************************/
@@ -153,7 +176,7 @@ MUX_R_TYPE_OR_I_Type
 	.data_0_i(instruction_w[20:16]),
 	.data_1_i(instruction_w[15:11]),
 	
-	.mux_o(write_register_w)
+	.mux_o(r_or_i_instruction)
 
 );
 
@@ -197,6 +220,62 @@ MUX_PC_PLUS4_OR_DATA
 	
 	.mux_o(pc_plus4_or_data_w)
 );
+
+
+Multiplexer_2_to_1
+#(
+	.N_BITS(32)
+)
+MUX_PC_PLUS_BRANCH_OR_PC_PLUS_4
+(
+	.selector_i((branch_ne_w & ~(zero_w)) | (branch_eq_w & zero_w)),
+	.data_0_i(pc_plus_4_w),
+	.data_1_i(pc_branch_adder_w),
+	
+	.mux_o(pc_branch_adder_result_w)
+);
+
+
+Multiplexer_2_to_1
+#(
+	.N_BITS(32)
+)
+MUX_J_OR_JAL_OR_NOT
+(
+	.selector_i(j_w | jal_w),
+	.data_0_i(pc_branch_adder_result_w),
+	.data_1_i({pc_plus_4_w[31:28], instruction_w[25:0], 4'b0}),
+	
+	.mux_o(pc_jump_w)
+);
+
+
+Multiplexer_2_to_1
+#(
+	.N_BITS(32)
+)
+MUX_JR_OR_NOT
+(
+	.selector_i(jr_w),
+	.data_0_i(pc_jump_w),
+	.data_1_i(read_data_1_w),
+	
+	.mux_o(pc_new_adderss_w)
+);
+
+Multiplexer_2_to_1
+#(
+	.N_BITS(32)
+)
+MUX_RA_OR_REGS
+(
+	.selector_i(jal_w),
+	.data_0_i(r_or_i_instruction),
+	.data_1_i(5'b11111),
+	
+	.mux_o(write_register_w)
+);
+
 
 Register_File
 REGISTER_FILE_UNIT

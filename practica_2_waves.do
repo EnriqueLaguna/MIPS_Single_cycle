@@ -32,7 +32,7 @@ add wave -noupdate -expand -group RAM -radix decimal /MIPS_Processor_TB/DUV/RAM/
 add wave -noupdate -expand -group REGISTERS -label t0 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t0/data_o
 add wave -noupdate -expand -group REGISTERS -label s0 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s0/data_o
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {19 ps} 0}
+WaveRestoreCursors {{Cursor 1} {0 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100

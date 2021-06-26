@@ -23,26 +23,29 @@ module ALU_Control
 
 // 									CTL_FUNCTN
 //										111_020HEX
-localparam R_TYPE_ADD    = 9'b111_100000;
+localparam R_TYPE_ADD    = 10'b0111_100000;
 //										100_XXXHEX
-localparam I_TYPE_ADDI	 = 9'b100_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
-localparam I_TYPE_ORI	 = 9'b001_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
-localparam I_TYPE_LUI	 = 9'b010_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
+localparam I_TYPE_ADDI	 = 10'b0100_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
+localparam I_TYPE_ORI	 = 10'b0001_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
+localparam I_TYPE_LUI	 = 10'b0010_xxxxxx; // las tipo I no tienen FUNCTN, por eso las 'x'
 //										111_000HEX
-localparam R_TYPE_SLL	 = 9'b111_000000;
+localparam R_TYPE_SLL	 = 10'b0111_000000;
 //										111_022HEX
-localparam R_TYPE_SUB	 = 9'b111_100010;
+localparam R_TYPE_SUB	 = 10'b0111_100010;
 //										111_002HEX
-localparam R_TYPE_SRL	 = 9'b111_000010;
-localparam R_TYPE_OR		 = 9'b111_100101;
-localparam R_TYPE_AND 	 = 9'b111_100100;
-localparam I_TYPE_ANDI 	 = 9'b011_xxxxxx;
-localparam R_TYPE_NOR    = 9'b111_100111;
-localparam I_TYPE_LW		 = 9'b101_xxxxxx;
+localparam R_TYPE_SRL	 = 10'b0111_000010;
+localparam R_TYPE_OR		 = 10'b0111_100101;
+localparam R_TYPE_AND 	 = 10'b0111_100100;
+localparam I_TYPE_ANDI 	 = 10'b0011_xxxxxx;
+localparam R_TYPE_NOR    = 10'b0111_100111;
+localparam I_TYPE_LW		 = 10'b0101_xxxxxx;
+localparam I_TYPE_BEQ	 = 10'b0110_xxxxxx;
+localparam I_TYPE_BNE	 = 10'b1000_xxxxxx;
+
 
 
 reg [3:0] alu_control_values_r;
-wire [8:0] selector_w;
+wire [9:0] selector_w;
 
 // concatenación entre la OP de ALU y la FNTN de ALU
 assign selector_w = {alu_op_i, alu_function_i};
@@ -64,7 +67,8 @@ always@(selector_w)begin
 		I_TYPE_ANDI:   alu_control_values_r = 4'b0111;
 		R_TYPE_NOR:    alu_control_values_r = 4'b1000;
 		I_TYPE_LW:     alu_control_values_r = 4'b0011;
-		
+		I_TYPE_BEQ:		alu_control_values_r = 4'b0100;
+		I_TYPE_BNE:		alu_control_values_r = 4'b0100;
 
 		default: alu_control_values_r = 4'b1001;
 	endcase
