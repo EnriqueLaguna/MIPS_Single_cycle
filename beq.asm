@@ -1,9 +1,14 @@
 .text
-addi $s0, $0, 1
-addi $s1, $0, 1
-beq $s0, $s1, brinca
+addi $t0, $zero, 1
+addi $t1, $zero, 1
+addi $t2, $zero, 2
+aca:
+beq $t0, $t2, aqui
+beq $t0, $t1, aqui
 nop
 nop
 nop
-brinca:
-addi $s0, $s0, 4
+nop
+aqui:
+bne $t0, $t1, aca
+bne $t0, $t2, aca

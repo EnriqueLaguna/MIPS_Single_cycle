@@ -52,7 +52,7 @@ wire jal_w;
 wire jr_w;
 wire branch_eq_w;
 wire branch_ne_w;
-wire [2:0] alu_op_w;
+wire [3:0] alu_op_w;
 wire [3:0] alu_operation_w;
 wire [4:0] write_register_w;
 wire [4:0] r_or_i_instruction;
@@ -156,7 +156,7 @@ Adder
 PC_BRANCH_ADDER
 (
 	.data_0_i(pc_plus_4_w),
-	.data_1_i(inmmediate_extend_w << 2),
+	.data_1_i(inmmediate_extend_w * 4),
 	
 	.result_o(pc_branch_adder_w)
 );
@@ -244,7 +244,7 @@ MUX_J_OR_JAL_OR_NOT
 (
 	.selector_i(j_w | jal_w),
 	.data_0_i(pc_branch_adder_result_w),
-	.data_1_i({pc_plus_4_w[31:28], instruction_w[25:0], 4'b0}),
+	.data_1_i({pc_plus_4_w[31:28], instruction_w[25:0], 2'b00}),
 	
 	.mux_o(pc_jump_w)
 );
@@ -265,7 +265,7 @@ MUX_JR_OR_NOT
 
 Multiplexer_2_to_1
 #(
-	.N_BITS(32)
+	.N_BITS(5)
 )
 MUX_RA_OR_REGS
 (

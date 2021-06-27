@@ -36,6 +36,7 @@ localparam I_TYPE_ORI =	6'hD;
 localparam I_TYPE_LUI =	6'hF;
 localparam I_TYPE_ANDI = 6'hC;
 localparam I_TYPE_LW = 6'h23;
+localparam I_TYPE_SW = 6'h2b;
 localparam I_TYPE_BEQ = 6'h4;
 localparam I_TYPE_BNE = 6'h5;
 localparam J_TYPE_JUMP = 6'h2;
@@ -53,6 +54,7 @@ always@(opcode_i) begin
 		I_TYPE_LUI :  control_values_r = 14'b00_0_101_00_00_0010;
 		I_TYPE_ANDI:  control_values_r = 14'b00_0_101_00_00_0011;
 		I_TYPE_LW: 	  control_values_r = 14'b00_0_111_10_00_0101;
+		I_TYPE_SW:    control_values_r = 13'b00_0_100_01_00_1001;
 		I_TYPE_BEQ:	  control_values_r = 14'b00_0_000_00_01_0110;
 		I_TYPE_BNE:   control_values_r = 14'b00_0_000_00_10_1000;
 		J_TYPE_JUMP:  control_values_r = 14'b10_0_000_00_00_0000;

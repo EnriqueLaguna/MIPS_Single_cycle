@@ -14,7 +14,7 @@
 ******************************************************************/
 module ALU_Control
 (
-	input [2:0] alu_op_i,
+	input [3:0] alu_op_i,
 	input [5:0] alu_function_i,
 	
 	output [3:0] alu_operation_o
@@ -39,6 +39,7 @@ localparam R_TYPE_AND 	 = 10'b0111_100100;
 localparam I_TYPE_ANDI 	 = 10'b0011_xxxxxx;
 localparam R_TYPE_NOR    = 10'b0111_100111;
 localparam I_TYPE_LW		 = 10'b0101_xxxxxx;
+localparam I_TYPE_SW 	 = 10'b1001_xxxxxx;
 localparam I_TYPE_BEQ	 = 10'b0110_xxxxxx;
 localparam I_TYPE_BNE	 = 10'b1000_xxxxxx;
 
@@ -67,6 +68,7 @@ always@(selector_w)begin
 		I_TYPE_ANDI:   alu_control_values_r = 4'b0111;
 		R_TYPE_NOR:    alu_control_values_r = 4'b1000;
 		I_TYPE_LW:     alu_control_values_r = 4'b0011;
+		I_TYPE_SW:		alu_control_values_r = 4'b0011;
 		I_TYPE_BEQ:		alu_control_values_r = 4'b0100;
 		I_TYPE_BNE:		alu_control_values_r = 4'b0100;
 
