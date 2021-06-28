@@ -42,18 +42,18 @@ localparam LW =  4'b1010;
      begin
 		case (alu_operation_i)
 		
-		  ADD: // add & LW & SW
+		  ADD: // add & LW
 			alu_data_o = a_i + b_i;
 		  ORI: // ori
 			alu_data_o = a_i | b_i;
 		  SLL: //shift left logical
 			alu_data_o = b_i << shamt;
-		  SUB: // subtract (a - b) -- tambien lo usamos para hacer las comparaciones de beq y bne
+		  SUB: // subtract (a - b)
 			alu_data_o = a_i - b_i;
 		  SRL://shift right logical
 		   alu_data_o = b_i >> shamt;
 		  LUI:// concatenar el valor inmediato con 16 0's
-		   alu_data_o = {b_i[15:0], 16'b0};
+		   alu_data_o = {b_i, 16'b0};
 		  AND:
 			alu_data_o = a_i & b_i;
 		  NOR:
@@ -63,7 +63,7 @@ localparam LW =  4'b1010;
 			alu_data_o = 0;
 		endcase // case(control)
 		
-		zero_o = (alu_data_o == 0) ? 1'b1 : 1'b0; // esta bandera nos ayuda para el resultado de comparaciones de beq y bne
+		zero_o = (alu_data_o == 0) ? 1'b1 : 1'b0;
 		
      end // always @ (A or B or control)
 	  

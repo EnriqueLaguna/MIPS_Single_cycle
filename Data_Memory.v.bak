@@ -28,11 +28,8 @@ module Data_Memory
 	wire [DATA_WIDTH-1:0] real_address_helper_1;
 	wire [DATA_WIDTH-1:0] real_address_helper_2;
 	
-	// restamos la dirección base que es donde va a empezar la RAM
 	assign real_address_helper_1 = address_i - 32'h1001_0000;
-	// es lo mismo que un corrimiento de 2 a la derecha === / 4 -> esto nos da el index/posición en la RAM
 	assign real_address_helper_2 = {2'b0, real_address_helper_1[DATA_WIDTH-1:2]};
-	// mapeo para el index de RAM
 
 	always @ (posedge clk)
 	begin

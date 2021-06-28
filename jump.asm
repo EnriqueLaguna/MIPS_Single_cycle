@@ -1,9 +1,15 @@
 .text
-j brinca_aca_prro
+start:
+jal hola
+como:
+j hola
 nop
 nop
 nop
 nop
+hola:
+j estas
 nop
-brinca_aca_prro:
-addi $s0, $0, 1
+nop
+estas:
+jr $ra

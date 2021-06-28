@@ -14,7 +14,7 @@
 module Control
 (
 	input [5:0]opcode_i,
-	input [5:0]funct,
+	input [5:0]funct, // mandamos traer la parte funct de la instrucción R (6 bits)
 	output j_o,
 	output jal_o,
 	output jr_o,
@@ -54,7 +54,7 @@ always@(opcode_i) begin
 		I_TYPE_LUI :  control_values_r = 14'b00_0_101_00_00_0010;
 		I_TYPE_ANDI:  control_values_r = 14'b00_0_101_00_00_0011;
 		I_TYPE_LW: 	  control_values_r = 14'b00_0_111_10_00_0101;
-		I_TYPE_SW:    control_values_r = 13'b00_0_100_01_00_1001;
+		I_TYPE_SW:    control_values_r = 14'b00_0_100_01_00_1001;
 		I_TYPE_BEQ:	  control_values_r = 14'b00_0_000_00_01_0110;
 		I_TYPE_BNE:   control_values_r = 14'b00_0_000_00_10_1000;
 		J_TYPE_JUMP:  control_values_r = 14'b10_0_000_00_00_0000;
@@ -76,9 +76,10 @@ assign mem_read_o = control_values_r[7];  // cuando se lee de memoria
 assign mem_write_o = control_values_r[6]; // cuando se escribe en memoria
 assign branch_ne_o = control_values_r[5]; // para bnq
 assign branch_eq_o = control_values_r[4]; // para beq
-assign alu_op_o = control_values_r[3:0];	// 3 primeros bits = ALU Op
+assign alu_op_o = control_values_r[3:0];	// 4 primeros bits = ALU Op
 
-assign jr_o = reg_dst_o & funct[3]; 
+assign jr_o = reg_dst_o & funct[3]; // si el destino de la tipo R esta en 1 y el 3 bit de la instrucción está prendido, entonces jr = 1
+				    // jr es la única operacion tipo R que tiene el 3er bit en 1
 
 endmodule
 
