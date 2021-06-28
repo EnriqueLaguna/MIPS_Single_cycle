@@ -5,36 +5,52 @@ add wave -noupdate /MIPS_Processor_TB/reset_tb
 add wave -noupdate -radix decimal /MIPS_Processor_TB/alu_result_tb
 add wave -noupdate -expand -group PC -radix hexadecimal /MIPS_Processor_TB/DUV/PC/new_pc_i
 add wave -noupdate -expand -group PC -radix hexadecimal /MIPS_Processor_TB/DUV/PC/pc_value_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/opcode_i
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/j_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/jal_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/reg_dst_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/branch_eq_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/branch_ne_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/mem_read_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/mem_to_reg_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/mem_write_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/alu_src_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/reg_write_o
-add wave -noupdate -expand -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/alu_op_o
-add wave -noupdate -expand -group CONTROL -radix binary /MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/opcode_i
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/j_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/jal_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/reg_dst_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/branch_eq_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/branch_ne_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/mem_read_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/mem_to_reg_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/mem_write_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/alu_src_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/reg_write_o
+add wave -noupdate -group CONTROL /MIPS_Processor_TB/DUV/CONTROL_UNIT/alu_op_o
+add wave -noupdate -group CONTROL -radix binary /MIPS_Processor_TB/DUV/CONTROL_UNIT/control_values_r
 add wave -noupdate -expand -group ROM -radix hexadecimal /MIPS_Processor_TB/DUV/ROM/address_i
 add wave -noupdate -expand -group ROM -radix hexadecimal /MIPS_Processor_TB/DUV/ROM/real_address_mask_w
 add wave -noupdate -expand -group ROM -radix hexadecimal /MIPS_Processor_TB/DUV/ROM/real_address_r
 add wave -noupdate -expand -group ROM -radix hexadecimal /MIPS_Processor_TB/DUV/ROM/instruction_o
-add wave -noupdate -expand -group RAM -radix hexadecimal /MIPS_Processor_TB/DUV/RAM/write_data_i
-add wave -noupdate -expand -group RAM -radix hexadecimal -childformat {{{/MIPS_Processor_TB/DUV/RAM/address_i[31]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[30]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[29]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[28]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[27]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[26]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[25]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[24]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[23]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[22]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[21]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[20]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[19]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[18]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[17]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[16]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[15]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[14]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[13]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[12]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[11]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[10]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[9]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[8]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[7]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[6]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[5]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[4]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[3]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[2]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[1]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[0]} -radix hexadecimal}} -subitemconfig {{/MIPS_Processor_TB/DUV/RAM/address_i[31]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[30]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[29]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[28]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[27]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[26]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[25]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[24]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[23]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[22]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[21]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[20]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[19]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[18]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[17]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[16]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[15]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[14]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[13]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[12]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[11]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[10]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[9]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[8]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[7]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[6]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[5]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[4]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[3]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[2]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[1]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[0]} {-height 15 -radix hexadecimal}} /MIPS_Processor_TB/DUV/RAM/address_i
-add wave -noupdate -expand -group RAM -radix hexadecimal /MIPS_Processor_TB/DUV/RAM/real_address_helper_1
-add wave -noupdate -expand -group RAM -radix hexadecimal /MIPS_Processor_TB/DUV/RAM/real_address_helper_2
-add wave -noupdate -expand -group RAM /MIPS_Processor_TB/DUV/RAM/mem_write_i
-add wave -noupdate -expand -group RAM /MIPS_Processor_TB/DUV/RAM/mem_read_i
-add wave -noupdate -expand -group RAM -radix decimal /MIPS_Processor_TB/DUV/RAM/data_o
+add wave -noupdate -group RAM -radix hexadecimal /MIPS_Processor_TB/DUV/RAM/write_data_i
+add wave -noupdate -group RAM -radix hexadecimal -childformat {{{/MIPS_Processor_TB/DUV/RAM/address_i[31]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[30]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[29]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[28]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[27]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[26]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[25]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[24]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[23]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[22]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[21]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[20]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[19]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[18]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[17]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[16]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[15]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[14]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[13]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[12]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[11]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[10]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[9]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[8]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[7]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[6]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[5]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[4]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[3]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[2]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[1]} -radix hexadecimal} {{/MIPS_Processor_TB/DUV/RAM/address_i[0]} -radix hexadecimal}} -subitemconfig {{/MIPS_Processor_TB/DUV/RAM/address_i[31]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[30]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[29]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[28]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[27]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[26]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[25]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[24]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[23]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[22]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[21]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[20]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[19]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[18]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[17]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[16]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[15]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[14]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[13]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[12]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[11]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[10]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[9]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[8]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[7]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[6]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[5]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[4]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[3]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[2]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[1]} {-height 15 -radix hexadecimal} {/MIPS_Processor_TB/DUV/RAM/address_i[0]} {-height 15 -radix hexadecimal}} /MIPS_Processor_TB/DUV/RAM/address_i
+add wave -noupdate -group RAM -radix hexadecimal /MIPS_Processor_TB/DUV/RAM/real_address_helper_1
+add wave -noupdate -group RAM -radix hexadecimal /MIPS_Processor_TB/DUV/RAM/real_address_helper_2
+add wave -noupdate -group RAM /MIPS_Processor_TB/DUV/RAM/mem_write_i
+add wave -noupdate -group RAM /MIPS_Processor_TB/DUV/RAM/mem_read_i
+add wave -noupdate -group RAM -radix decimal /MIPS_Processor_TB/DUV/RAM/data_o
+add wave -noupdate -expand -group REGISTERS -label s0 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s0/data_o
 add wave -noupdate -expand -group REGISTERS -label t0 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t0/data_o
 add wave -noupdate -expand -group REGISTERS -label t1 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t1/data_o
 add wave -noupdate -expand -group REGISTERS -label t2 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t2/data_o
-add wave -noupdate -expand -group REGISTERS -label s0 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/s0/data_o
+add wave -noupdate -expand -group REGISTERS -label a1 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/a1/data_o
+add wave -noupdate -expand -group REGISTERS -label a2 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/a2/data_o
+add wave -noupdate -expand -group REGISTERS -label a3 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/a3/data_o
+add wave -noupdate -expand -group REGISTERS -label sp -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/sp/data_o
+add wave -noupdate -expand -group REGISTERS -label gp -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/gp/data_o
+add wave -noupdate -expand -group REGISTERS -label ra -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/ra/data_o
+add wave -noupdate -expand -group REGISTERS -label t4 -radix decimal /MIPS_Processor_TB/DUV/REGISTER_FILE_UNIT/t4/data_o
+add wave -noupdate -expand -group Torre_A -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[16]}
+add wave -noupdate -expand -group Torre_A -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[8]}
+add wave -noupdate -expand -group Torre_A -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[0]}
+add wave -noupdate -expand -group Torre_B -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[17]}
+add wave -noupdate -expand -group Torre_B -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[9]}
+add wave -noupdate -expand -group Torre_B -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[1]}
+add wave -noupdate -expand -group Torre_C -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[18]}
+add wave -noupdate -expand -group Torre_C -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[10]}
+add wave -noupdate -expand -group Torre_C -radix decimal {/MIPS_Processor_TB/DUV/RAM/ram[2]}
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {31 ps} 0}
+WaveRestoreCursors {{Cursor 1} {140 ps} 0 Cyan default}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
@@ -50,4 +66,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {14 ps} {44 ps}
+WaveRestoreZoom {0 ps} {103 ps}
